@@ -204,20 +204,6 @@ body {
     color: #777;
   }
 
-#music-btn {
-  position:sticky;
-  top: 0px;
-  left: 10px;
-
-  background: var(--cherry);
-  color: white;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 12px;
-  cursor: pointer;
-
-  z-index: 99999;
-}
 
 
   
@@ -311,7 +297,7 @@ header, section, footer, #music-btn {
     <h1>Happy Birthday, Love 🎂</h1>
     <p>Made with lots of ❤️ just for you.</p>
   </header>
-  <button id="music-btn">🎵 Play</button>
+  
 
   <section id="our-story">
     <h2>Our Story</h2>
@@ -414,44 +400,10 @@ i love your sparkle ❤️.</p>
   <footer>
     <p>Because you deserve the world and all my love from ur bff Hajoura❤️ .</p>
   </footer>
-<audio id="bg-music" loop>
-  <source src="music1.mp3" type="audio/mpeg">
-</audio>
-
-
-
-<script>
-const envelope = document.getElementById('envelope');
-const modal = document.getElementById('modal');
-const closeBtn = document.getElementById('close-btn');
-const music = document.getElementById('bg-music');
-const musicBtn = document.getElementById('music-btn');
-
-
-envelope.addEventListener('click', () => {
-  modal.classList.add('show');
-});
-
-
-closeBtn.addEventListener('click', () => {
-  modal.classList.remove('show');
-});
-
-
-musicBtn.addEventListener('click', () => {
-  if (music.paused) {
-    music.play();
-    musicBtn.textContent = '🎵 Pause';
-  } else {
-    music.pause();
-    musicBtn.textContent = '🎵 Play';
-  }
-});
-</script>
-
 </body>
 
 </html>
+
 
 
 
