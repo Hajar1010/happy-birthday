@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/pics/fav.jpeg">
+  <title>Happy Birthday my roro💌</title>
+<style>
+  :root {
+    --cherry: #8b0000;
+    --light-pink: #ffeaf3;
+    --rose: #ffb6c1;
+    --text-dark: #2b2b2b;
+    --white: #fff;
+  }
+
+  * { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  background: linear-gradient(180deg, var(--light-pink), #fff);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+
+  header {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--white);
+    border-bottom: 3px solid var(--rose);
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    color: var(--cherry);
+    margin: 0;
+  }
+
+  header p {
+    font-size: 1.1rem;
+    color: #555;
+  }
+
+  section {
+    padding: 70px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  section h2 {
+    font-size: 2rem;
+    color: var(--cherry);
+    margin-bottom: 20px;
+  }
+
+  section p {
+    line-height: 1.7;
+    font-size: 1.1rem;
+  }
+
+  .photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 images per row */
+  gap: 160px;
+  margin-top: 20px;
+}
+
+.photo-grid img {
+  width: 250%;
+  height: 250px;         /* fixed height */
+  object-fit: cover;     /* fills the container, may crop */
+  border-radius: 16px;   /* rounded corners */
+  border: 4px solid var(--cherry);  /* border stays */
+  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.15); /* shadow stays */
+  background: var(--white); /* optional fallback background */
+}
+  .envelope {
+    width: 90px;
+    height: 90px;
+    background: var(--cherry);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(139, 0, 0, 0.25);
+    transition: transform 0.2s ease;
+  }
+
+  .envelope:hover {
+    transform: translateY(-5px) rotate(-3deg);
+  }
+
+  .envelope svg {
+    fill: #fff;
+  }
+
+  .envelope-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  #the-click {
+    animation: pulse 1.5s infinite;
+  }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* 🔥 THIS IS THE KEY */
+}
+
+  .modal.show {
+    display: flex;
+  }
+
+  /* 💌 LETTER STYLE (FIXED) */
+  .modal-content {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    max-height: 70vh;
+    overflow-y: auto;
+    text-align: left;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+
+  .modal-content h3 {
+    color: var(--cherry);
+    margin-bottom: 20px;
+  }
+
+  .modal-content p {
+    color: #7a1c2b;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .modal-content p:first-of-type,
+  .modal-content p:last-of-type {
+    color: #b11226;
+    font-weight: 600;
+  }
+
+  .close-btn {
+    background: var(--cherry);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .wish-wall {
+    background: var(--light-pink);
+    padding: 60px 20px;
+  }
+
+  .wish-wall h2 {
+    color: var(--cherry);
+    margin-bottom: 30px;
+  }
+
+  .wish-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .wish-card {
+    background: var(--white);
+    border: 3px solid var(--cherry);
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    box-shadow: 0 6px 15px rgba(139, 0, 0, 0.1);
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 10px;
+    background: var(--white);
+    border-top: 3px solid var(--rose);
+    color: #777;
+  }
+
+#music-btn {
+  position:sticky;
+  top: 0px;
+  left: 10px;
+
+  background: var(--cherry);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+
+  z-index: 99999;
+}
+
+
+  /* Floating background */
+.floating-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Heart shape */
+.floating-bg .heart {
+  position: absolute;
+  bottom: -40px;
+  width: 20px;
+  height: 20px;
+  background: var(--cherry);
+  transform: rotate(45deg);
+  opacity: 0.25;
+  animation: floatUp linear infinite;
+}
+
+.floating-bg .heart::before,
+.floating-bg .heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--cherry);
+  border-radius: 50%;
+}
+
+.floating-bg .heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.floating-bg .heart::after {
+  left: -10px;
+  top: 0;
+}
+
+/* Random positions & speeds */
+.floating-bg .heart:nth-child(1) { left: 5%;  animation-duration: 12s; }
+.floating-bg .heart:nth-child(2) { left: 15%; animation-duration: 18s; }
+.floating-bg .heart:nth-child(3) { left: 25%; animation-duration: 15s; }
+.floating-bg .heart:nth-child(4) { left: 35%; animation-duration: 22s; }
+.floating-bg .heart:nth-child(5) { left: 45%; animation-duration: 17s; }
+.floating-bg .heart:nth-child(6) { left: 55%; animation-duration: 20s; }
+.floating-bg .heart:nth-child(7) { left: 65%; animation-duration: 14s; }
+.floating-bg .heart:nth-child(8) { left: 75%; animation-duration: 19s; }
+.floating-bg .heart:nth-child(9) { left: 85%; animation-duration: 16s; }
+.floating-bg .heart:nth-child(10){ left: 95%; animation-duration: 21s; }
+
+/* Animation */
+@keyframes floatUp {
+  from {
+    transform: translateY(0) rotate(45deg);
+  }
+  to {
+    transform: translateY(-120vh) rotate(405deg);
+  }
+}
+
+/* Keep content above hearts */
+header, section, footer, #music-btn {
+  position: relative;
+  z-index: 1;
+}
+ 
+
+</style>
+
+</head>
+<body>
+
+<div class="floating-bg">
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+  <span class="heart"></span>
+</div>
+
+  <header>
+    
+    <h1>Happy Birthday, Love 🎂</h1>
+    <p>Made with lots of ❤️ just for you.</p>
+  </header>
+  <button id="music-btn">🎵 Play</button>
+
+  <section id="our-story">
+    <h2>Our Story</h2>
+    <p>From our random laughs to late-night talks, every moment with you has been unforgettable. This little site is just a way of saying how much you mean to me.</p>
+    <div class="photo-grid">
+      <img src="pics/pic1.jpeg" alt="Memory 1">
+      <img src="pics/pic2.jpeg" alt="Memory 2" onerror="this.src='https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=60'" />
+      <img src="pics/pic3.jpeg" alt="Memory 3" onerror="this.src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=60'" />
+      <img src="pics/pic4.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic15.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic9.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic10.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic11.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic12.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic13.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic14.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic8.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic16.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic17.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic18.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic19.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic20.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic21.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic22.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic23.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic24.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic25.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic26.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+      <img src="pics/pic7.jpeg" alt="Memory 5" onerror="this.src='https://images.unsplash.com/photo-1541233349642-6e425fe6190e?w=800&q=60'" />
+    </div>
+  </section>
+
+  <section id="why-special">
+    <h2>Why You’re Special</h2>
+    <p>Your kindness, humor, and the way you make everyone feel seen haadi sara7aa rddit lihaa lball, ur literally as shinning as the sun love that in you❤️, You’re special because you're just… you. You're the calm when everythings loud,You're cute in every possible way,kimaa kangol lik nty bhaal l 9aamar zwinaa f ga3 l phases, mhm u got ur aura. chofi m3ak envelope li ltht</p>
+  </section>
+
+<section id="birthday-letter" class="envelope-section">
+<h2>The Birthday Letter 💌</h2>
+<div class="envelope" id="envelope">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+</div>
+<div id ="the-click">
+    <p>Click the envelope to read your letter 💖</p>
+</div>
+
+<div class="modal" id="modal">
+<div class="modal-content" style="max-height: 70vh; overflow-y: auto; text-align: left; font-family: Arial, Helvetica, sans-serif; font-size: 1rem; line-height: 1.6;">
+<h3>My Letter to You</h3>
+<p>Dear Bestie, Ma Gogeous, Hbiba dylii,</p>
+<p>Salaam alikom marhaban bikom fi 9anat YASPLAYS m3aakom yassine hada derto Nov 2nd 3aarfa bkri wlkn mhm❤️😂
+Haappiiestt birthday lik a tasaano🎉❤️.
+Okaay where should i start, if i wrote about you it would never be enough, as i said earlier we randomly met and now i couldn't even imagine a day without talking to you, Some people enter our lives quietly and suddenly they become home.
+That’s what you are to me.
+
+I didn’t expect you. I didn’t plan you. But somehow, you found a permanent place in my heart. Talking to you feels natural, like something my soul already knew how to do. Now, even the smallest moment feels incomplete if I don’t share it with you❤️ .
+
+You’re not just someone I care about ,you’re someone I’m protective of (possseessionn hbbeek). Your happiness matters to me. Your pain matters to me. Your comfort matters to me . If something weighs on you, it weighs on me too. That’s how deeply connected I feel to you ❤️ you already know about it thast's just a quick reminder.
+
+Remember when we talked once about me wanting a sister and i said i have never wished for one ? actually I didn’t know I needed one until i've met you .You became the sister my heart picked without hesitation🫂🫂.
+
+My love for you is unconditional. The kind of love that stays, that listens, that doesn’t disappear when things get messy(i hope not, just kidding 😂). And I’m thankful and gratefull every single day for whatever force brought us together 😂❤️.
+
+I wish you a life full of softness and success. I want doors to open for you, dreams to meet effort, and peace to find you even on hard days. You deserve gentleness from this shitty world.
+
+Thank you for seeing me without asking me to be different. For letting me be me,be real, imperfect, emotional. Thank you for your presence as i always say❤️.
+
+I hope you know you’re never alone. You don’t have to carry everything by yourself. You can come to me tired, angry (if you feel lonely i can be lonely with you) I’ll still be here. We’ll talk, we’ll sit, we’ll figure it out together remember communication is key.
+
+I don’t promise perfection. I promise honesty, effort, and staying. Through good days and bad ones, however the misunderstandings we'll get our things together❤️❤️. 
+and you gotta show me how to love you and teach me the way you want to be treated ❤️ 
+
+You mean more to me than words can explain. I’m proud of the woman you are.
+Sooo today, I hope you feel extra loved, matter of fact you are  always loved by me . today is ur day nty w ddik lktkootaa❤️💋.
+keep in mind you are the sweetest  humain being i have ever met  your soul and heart are pure .and i love how you are such a caring loving person not just with me but with everyone else.
+blaaty ngaalboha darija chwiya bach iwaslok lkaalimat nit konty nty ahsaan sodfa w93at liya w li kaat3ni liya bzf hit hta haja madart 3abatan . ana momtana l lwojod dylk f hyaty hit khlitiha twali haka fun kter, love kter, admiring kter hahiya 9lbatha tani eng hhh , nty wahed chaakhs li 3amri bghit nkhasro w kanw3dk ayb9a fiya lhal ila w93at chi haja ana maghadich nl3abha aa 3iizaat naafs w ngol lik aaa la 3adi iji wahed imchi waahed noo noo no marahch 3adi ila jab lah kant 3adi ya3ni ga3 dakchi li glt lik/derto m3ak kolo kdob w mamanoch heell naahhh nty raaki my soulmate nsfi dyli taani. kaantma lik gaa3 lkhher finmaa kaan w ghaanfreeh bzzzf ila wsaalty l gaa3 dakchi li nty baghaah hit katstaha9ih .kaay3jabni lhaal fach kankon m3ak wakha makangolo walo nkono gher galsin hda b3diyatna w chada lik f idik ofc hhh i feel safe i9der nty ibaan lik 3adi wlkn ana kay3ni liya bzzf w fach kankon m3ak like dmaghi kaytcalma kaythaden hadi ma3rftch kfch anchrahha lik hhhh .
+nty bhaal chi malak maazetch fih raki WOW f kolcchi ljawanib i do my best to keep you ❤️❤️❤️ 
+
+
+
+i love your sparkle ❤️.</p>
+<p>With all my love❤️🫂</p>
+<p>jojo dylk ❤️ </p>
+  <button class="close-btn" id="close-btn">Close</button>
+</div>
+</div>
+
+  <section class="wish-wall">
+    <h2>Wish Wall ❤️ </h2>
+    <div class="wish-grid">
+      <div class="wish-card">May every wish you make today come true you deserve all the joy in the world 💖</div>
+      <div class="wish-card">You deserve everything beautiful the world has to offer ❤️</div>
+      <div class="wish-card">Keep shining bright❤️ the world needs your light 3tihh lyaa gher ana ach bghity l world </div>
+      <div class="wish-card">May this year bring you all the joy and love you give to others ❤️</div>
+      <div class="wish-card">You’re amazing exactly as you are raani 9asdahaa 💕</div>
+      <div class="wish-card">May Allah keep us together❤️</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Because you deserve the world and all my love from ur bff Hajoura❤️ .</p>
+  </footer>
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+
+<script>
+const envelope = document.getElementById('envelope');
+const modal = document.getElementById('modal');
+const closeBtn = document.getElementById('close-btn');
+const music = document.getElementById('bg-music');
+const musicBtn = document.getElementById('music-btn');
+
+
+envelope.addEventListener('click', () => {
+  modal.classList.add('show');
+});
+
+
+closeBtn.addEventListener('click', () => {
+  modal.classList.remove('show');
+});
+
+
+musicBtn.addEventListener('click', () => {
+  if (music.paused) {
+    music.play();
+    musicBtn.textContent = '🎵 Pause';
+  } else {
+    music.pause();
+    musicBtn.textContent = '🎵 Play';
+  }
+});
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
+
