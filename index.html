@@ -399,10 +399,33 @@ i love your sparkle ❤️.</p>
 
   <footer>
     <p>Because you deserve the world and all my love from ur bff Hajoura❤️ .</p>
+  
   </footer>
+  <script>
+  const envelope = document.getElementById("envelope");
+  const modal = document.getElementById("modal");
+  const closeBtn = document.getElementById("close-btn");
+
+  envelope.addEventListener("click", () => {
+    modal.classList.add("show");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.remove("show");
+  });
+
+  // Optional: close when clicking outside the letter
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.remove("show");
+    }
+  });
+</script>
+
 </body>
 
 </html>
+
 
 
 
